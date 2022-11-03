@@ -1,0 +1,67 @@
+create database db1;
+use db1;
+create table BankMaster(Acno int primary key , Cname varchar(10) not null , City varchar(40) default 'Ambivali' , Balance int not null , Branchcode int , foreingmn key (Branchcode) references Branchs(Branchcode));
+
+create table Branchs(Branchcode int , location varchar(10) not null , primary key(Branchcode));
+
+create table BankTransactions(Acno int , Trantype char(1) , Trandate datetime not null , Amt int not null);
+
+insert into Branchs(Branchcode , location)
+values (1001 , 'Bota'),
+(1002 , 'Malwadi'),
+(1003 , 'Ghargaon'),
+(1004 , 'Nashik'),
+(1005 , 'Alephata');
+
+insert into BankMaster(Acno , Cname , City , Balance , Branchcode)
+values(10 ,'Bhargavi' , 'Bota' , 10000 ,1001), 
+(20 ,'Dnyaneshwari' , 'Malwadi' , 2000 ,1002), 
+(30 ,'Tejaswini' , 'Ghargaon' , 30000 ,1004), 
+(40 ,'Bhargavi' , 'Nashik' , 40000 ,1002), 
+(50 ,'Shital' , 'Alephata' , 50000 ,1001);
+
+insert into BankTransaction(Acno , Trantype , Trandate , Amt )
+values(10 , 'w' , '10-02-2021' , '10:00:00' , 50000),
+(20 , 'd' , '11-03-2021' , '08:00:00' , 70000),
+(30 , 'x' , '12-04-2021' , '02:00:00' , 90000),
+(40 , 'y' , '13-05-2021' , '11:00:00' , 40000),
+(50 , 'm' , '14-06-2021' , '09:00:00' , 80000);
+
+/*
+1)List tte bank master details which customer have at least 30000 and above?
+*/
+
+select * from BankMaster  where Balance >=30000;
+
+/*
+2)List the all branchs , Bank Master details  which branch have theb custonmers.
+*/
+
+select * from branchs ,  BankMaster where location in Cname;
+
+*/
+3)List the Bank Master details which  customer maximum no. of times 'w' transaction done.
+/*
+
+select  * from BankTransactions where Tranttype is 's';
+
+/*
+4)find the total bal based on branch code  and which branch total bal is above 100000 those branch,customer details.
+*/
+
+select * from Branchs where Branchcode >= 100000;
+
+/*
+5)To display all bankmaster details for given acno using 'procedure'
+*/
+
+/*
+6)To get all tansactions details base on date wise.
+*/
+select * from BankTransaction where Trandate;
+
+/*
+7)TO list the 3rd maximum balance customer details.
+*/
+
+select * from BankMasrter where ba;lance = 80000;
